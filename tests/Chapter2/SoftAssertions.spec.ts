@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test('Assertions Test', async ({ page }) => {
+test('Soft Assertions Test', async ({ page }) => {
       await page.goto('https://www.youtube.com/');
 
       //Visable, Editable, Enabled, Empty
@@ -15,10 +15,6 @@ test('Assertions Test', async ({ page }) => {
       await page.getByPlaceholder('Search', {exact:true}).first().press('Enter');
       await expect(page).toHaveURL('https://www.youtube.com/results?search_query=Playwright+by+testers+talk');
 
-      await expect(page).toHaveTitle('Playwright by testers talk - YouTube');
-
-      //await expect(page.locator('span[id="title"]').first()).toHaveText('Latest posts from Testers talk')
-      //await expect(page.locator('span[id="title"]').first()).toHaveCount(4);
-      //await expect(page.locator('span[id="title"]').first()).toBeDisabled();
+      await expect.soft(page).toHaveTitle('Playwright typescript by testers talk - YouTube');
 
 })
