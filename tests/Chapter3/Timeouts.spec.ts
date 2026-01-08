@@ -6,8 +6,11 @@ test('Timeouts in Playwright', async ({ page }) => {
       await page.goto('https://www.google.com/');
       await page.getByLabel('Search',{exact:true}).fill('Playwright by testers talk');
       await page.getByLabel('Search',{exact:true}).press('Enter');
-      await page.getByRole('link', { name: 'Playwright by Testers Talk' }).first().click();
+      await page.getByRole('link', { name: 'Playwright by Testers Talk' }).first().click({timeout:10000});
       await expect(page.getByText('Playwright by Testers Talk ✅').nth(2)).toBeVisible();
 
-      await page.waitForTimeout(60000);
+      await expect(page).toHaveTitle('Playwright by testers talk - YouTube',{timeout:5000});
+
+
+      //await page.waitForTimeout(60000);
 })
