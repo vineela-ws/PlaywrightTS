@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { count } from 'console';
 
 //Write Test 
 
@@ -20,5 +21,11 @@ test('Iterating matching elements Playwright TypeScript Test', async ({ page }) 
        const text =  await repositaryLinks[index].textContent();
         console.log(`Text from 2nd loop: ${text}`)
       }
-   
+              console.log("---------------------------------------------------------------------")
+
+      const repositaryLinks2 = await page.locator('.repo');
+      const count = await repositaryLinks2.count();
+      for (let index = 0; index < count; index++){
+           await repositaryLinks2.nth(index).textContent();
+      }
 })
