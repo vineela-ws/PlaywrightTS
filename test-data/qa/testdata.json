@@ -1,0 +1,12 @@
+{
+    "TestDataSet1":{
+        "skill1":"Playwright by testers talk",
+        "skill2":"Cypress by testers talk"
+    },
+
+     "TestDataSet2":{
+        "skill1":"JavaScript by testers talk",
+        "skill2":"API Testing by testers talk"
+    }
+
+}
