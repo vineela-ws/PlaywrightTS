@@ -18,13 +18,18 @@ const typedTestData = testData as TestData;
 
 for (const dataSetName in typedTestData) {
     const skill = typedTestData[dataSetName as keyof TestData];
+
+    test(`Data driven tetsing using JSON File in playwright : ${skill.skill1}`, async ({ page }) => {
+
+      await page.goto('https://www.google.com/');
+
+      await page.getByLabel('Search',{exact:true}).fill(skill.skill1);
+      await page.getByLabel('Search',{exact:true}).press('Enter');
+
+      await page.getByRole('link', { name:skill.skill1 }).first().click();
+
+      //Validate webpage title
+      await expect(page).toHaveTitle(skill.skill1+'-Youtube');
+})
 }
 
-// test('Data driven tetsing using JSON File Test', async ({ page }) => {
-//       await page.goto('https://www.google.com/');
-//       await page.getByLabel('Search',{exact:true}).fill('Playwright by testers talk');
-//       await page.getByLabel('Search',{exact:true}).press('Enter');
-
-//       await page.getByRole('link', { name: 'Playwright by Testers Talk' }).first().click();
-//       await expect(page.getByText('Playwright by Testers Talk ✅').nth(2)).toBeVisible();
-// })
