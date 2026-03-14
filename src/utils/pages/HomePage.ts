@@ -14,7 +14,13 @@ export class HomePage {
 
     //Methods
     async goToURL(){
-      await this.page.goto();
+      await this.page.goto('https://www.google.com/');  //It's better to fetch this from Env file
+    }
+
+    async searchWithKeywords(keyword:string) {
+        await this.searchTextbox.click();
+        await this.searchTextbox.fill(keyword);
+        await this.searchTextbox.fill('Enter');
     }
     
 }
